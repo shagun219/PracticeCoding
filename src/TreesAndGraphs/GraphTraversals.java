@@ -68,8 +68,14 @@ public class GraphTraversals {
         if(graph == null || graph.nodes == null || graph.nodes.isEmpty()) {
             return false;
         }
+        if(n == null || m== null) {
+            return false;
+        }
+        if(n == m) {
+            return true;
+        }
         List<GraphNode<T>> allNodes = graph.nodes;
-        if(!nodeExitsInGraph(graph, n) || !nodeExitsInGraph(graph, m)) {
+        if(!nodeExitsInGraph(graph, n)) {
             return false;
         }
         Queue<GraphNode<T>> queue = new LinkedList<GraphNode<T>>();

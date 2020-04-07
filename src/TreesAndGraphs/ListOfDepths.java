@@ -8,7 +8,7 @@ import java.util.Queue;
 import org.testng.annotations.Test;
 
 
-public class ListOfDepths<T> {
+public class ListOfDepths<T extends Comparable> {
 
     public List<LinkedList<BinaryTreeNode<T>>> listOfDepthsOfABinaryTree(BinaryTreeNode<T> root) {
         List<LinkedList<BinaryTreeNode<T>>> listOfDepths = new ArrayList<>();

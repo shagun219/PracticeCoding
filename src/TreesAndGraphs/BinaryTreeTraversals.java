@@ -1,8 +1,8 @@
 package TreesAndGraphs;
 
-public class BinaryTreeTraversals<T> {
+public class BinaryTreeTraversals<T extends Comparable> {
 
-    public static <T> String preOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
+    public static <T extends Comparable> String preOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
         if(pathBuilder == null) {
             //throw exception
             //pathBuilder = new StringBuilder();
@@ -18,7 +18,7 @@ public class BinaryTreeTraversals<T> {
         return pathBuilder.toString();
     }
 
-    public static <T> String inOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
+    public static <T extends Comparable> String inOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
         if(pathBuilder == null) {
             //throw exception
             //pathBuilder = new StringBuilder();
@@ -34,7 +34,7 @@ public class BinaryTreeTraversals<T> {
         return pathBuilder.toString();
     }
 
-    public static <T> String postOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
+    public static <T extends Comparable> String postOrder(BinaryTreeNode<T> root, StringBuilder pathBuilder) {
         if(pathBuilder == null) {
             //throw exception
             //pathBuilder = new StringBuilder();

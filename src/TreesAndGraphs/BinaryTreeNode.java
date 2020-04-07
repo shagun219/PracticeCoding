@@ -1,6 +1,6 @@
 package TreesAndGraphs;
 
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T extends Comparable> {
 
     protected T data;
     protected BinaryTreeNode<T> left;
