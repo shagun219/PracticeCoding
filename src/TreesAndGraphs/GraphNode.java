@@ -7,15 +7,21 @@ import java.util.List;
 public class GraphNode<T> {
 
     protected T data;
-    protected  boolean visited;
     protected List<GraphNode<T>> adjacentNodes;
+    protected Status status;
+
+    public enum Status {
+        UNVISITED,
+        VISITING,
+        VISITED;
+    }
 
     public GraphNode(T data) throws NoSuchFieldException {
         if(data == null) {
             throw new NoSuchFieldException("Cannot create node with null data");
         }
         this.data = data;
-        visited = false;
+        status = Status.UNVISITED;
         adjacentNodes = new ArrayList<>();
     }
 
@@ -27,7 +33,7 @@ public class GraphNode<T> {
         return adjacentNodes;
     }
 
-    public boolean isVisited() {
-        return visited;
+    public Status getStatus() {
+        return status;
     }
 }

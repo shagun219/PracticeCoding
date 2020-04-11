@@ -13,8 +13,10 @@ public class GraphTraversals {
         for(GraphNode<T> node: graph.nodes) {
             StringBuilder pathBuilder = new StringBuilder();
             DepthFirstSearchConnected(node, pathBuilder);
-            pathBuilder.setLength(pathBuilder.length() == 0 ? 0 : pathBuilder.length() - 1);
-            allGraphs.add(pathBuilder.toString());
+            if(pathBuilder.length() > 0) {
+                pathBuilder.setLength(pathBuilder.length() - 1);
+                allGraphs.add(pathBuilder.toString());
+            }
         }
         return allGraphs;
     }
@@ -23,23 +25,28 @@ public class GraphTraversals {
         if(node == null) {
             return;
         }
-        boolean isVisited = node.visited;
-        node.visited = !isVisited;
+        if(node.getStatus() != GraphNode.Status.UNVISITED) {
+            return;
+        }
+
         pathBuilder.append(node.data.toString()).append(",");
+        node.status = GraphNode.Status.VISITING;
         for(GraphNode<T> neighbour: node.adjacentNodes) {
-            if(isVisited == neighbour.visited) {
+            if(neighbour.getStatus() == GraphNode.Status.UNVISITED)  {
                 DepthFirstSearchConnected(neighbour, pathBuilder);
             }
         }
     }
 
-    public static <T> List<String> BreadthFirstSearch(Graph<T> graph) {
+   public static <T> List<String> BreadthFirstSearch(Graph<T> graph) {
         List<String> allGraphs = new ArrayList<String>();
         for(GraphNode<T> node: graph.nodes) {
             StringBuilder pathBuilder = new StringBuilder();
             BreadthFirstSearchConnected(node, pathBuilder);
-            pathBuilder.setLength(pathBuilder.length() == 0 ? 0 : pathBuilder.length() - 1);
-            allGraphs.add(pathBuilder.toString());
+            if(pathBuilder.length() > 0) {
+                pathBuilder.setLength(pathBuilder.length() - 1);
+                allGraphs.add(pathBuilder.toString());
+            }
         }
         return allGraphs;
     }
@@ -48,19 +55,22 @@ public class GraphTraversals {
         if(node == null) {
             return;
         }
+        if(node.getStatus() != GraphNode.Status.UNVISITED) {
+            return;
+        }
         LinkedList<GraphNode<T>> queue = new LinkedList<GraphNode<T>>();
-        boolean isVisited = node.visited;
-        node.visited = !isVisited;
+        node.status = GraphNode.Status.VISITING;
         queue.add(node);
         while(!queue.isEmpty()) {
             GraphNode<T> currentNode = queue.poll();
             pathBuilder.append(currentNode.data.toString()).append(",");;
             for(GraphNode<T> neighbour: currentNode.adjacentNodes ) {
-                if(isVisited == neighbour.visited) {
-                    neighbour.visited =!isVisited;
+                if(neighbour.status == GraphNode.Status.UNVISITED) {
+                    neighbour.status = GraphNode.Status.VISITING;
                     queue.add(neighbour);
                 }
             }
+            currentNode.status = GraphNode.Status.VISITED;
         }
     }
 
@@ -78,9 +88,11 @@ public class GraphTraversals {
         if(!nodeExitsInGraph(graph, n)) {
             return false;
         }
+        for(GraphNode<T> node : graph.nodes) {
+            node.status = GraphNode.Status.UNVISITED;
+        }
         Queue<GraphNode<T>> queue = new LinkedList<GraphNode<T>>();
-        boolean isVisited = n.visited;
-        n.visited = !isVisited;
+        n.status = GraphNode.Status.VISITING;
         queue.add(n);
         while(!queue.isEmpty()) {
             GraphNode<T> currentNode = queue.poll();
@@ -88,11 +100,12 @@ public class GraphTraversals {
                 if(neighbour == m) {
                     return true;
                 }
-                else if(isVisited == neighbour.visited) {
-                    neighbour.visited = !isVisited;
+                else if(neighbour.status == GraphNode.Status.UNVISITED) {
+                    neighbour.status = GraphNode.Status.VISITING;
                     queue.add(neighbour);
                 }
             }
+            currentNode.status = GraphNode.Status.VISITED;
         }
         return false;
     }
@@ -108,8 +121,7 @@ public class GraphTraversals {
             return true;
         }
         boolean found = false;
-        boolean isVisited = rootNode.visited;
-        rootNode.visited = !isVisited;
+        rootNode.status = GraphNode.Status.VISITING;
         queue.add(rootNode);
         while(!queue.isEmpty()) {
             GraphNode<T> currentNode = queue.poll();
@@ -117,11 +129,12 @@ public class GraphTraversals {
                 if(neighbour == n) {
                     found = true;
                 }
-                if(isVisited == neighbour.visited) {
-                    neighbour.visited =!isVisited;
+                if(neighbour.status == GraphNode.Status.UNVISITED) {
+                    neighbour.status = GraphNode.Status.VISITING;
                     queue.add(neighbour);
                 }
             }
+            currentNode.status = GraphNode.Status.VISITED;
         }
         return found;
     }

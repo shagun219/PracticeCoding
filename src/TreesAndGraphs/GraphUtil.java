@@ -39,6 +39,14 @@ public class GraphUtil {
         node24.adjacentNodes.add(node32);
         List<GraphNode<Integer>> nodes = new ArrayList<>(1);
         nodes.add(rootNode);
+        nodes.add(node11);
+        nodes.add(node12);
+        nodes.add(node21);
+        nodes.add(node22);
+        nodes.add(node23);
+        nodes.add(node24);
+        nodes.add(node31);
+        nodes.add(node32);
         Graph<Integer> graph = new Graph(nodes);
         return graph;
     }
@@ -83,6 +91,14 @@ public class GraphUtil {
 
         List<GraphNode<Integer>> nodes = new ArrayList<>(1);
         nodes.add(rootNode);
+        nodes.add(node11);
+        nodes.add(node12);
+        nodes.add(node21);
+        nodes.add(node22);
+        nodes.add(node23);
+        nodes.add(node24);
+        nodes.add(node31);
+        nodes.add(node32);
         Graph<Integer> graph = new Graph(nodes);
         return graph;
     }
@@ -111,6 +127,14 @@ public class GraphUtil {
         node24.adjacentNodes.add(node32);
         List<GraphNode<Integer>> nodes = new ArrayList<>(1);
         nodes.add(rootNode);
+        nodes.add(node11);
+        nodes.add(node12);
+        nodes.add(node21);
+        nodes.add(node22);
+        nodes.add(node23);
+        nodes.add(node24);
+        nodes.add(node31);
+        nodes.add(node32);
         Graph<Integer> graph = new Graph(nodes);
         return graph;
     }
@@ -136,7 +160,13 @@ public class GraphUtil {
         node3.adjacentNodes.add(node4);
         List<GraphNode<Integer>> nodes = new ArrayList<>(1);
         nodes.add(node0);
+        nodes.add(node1);
+        nodes.add(node2);
+        nodes.add(node3);
+        nodes.add(node4);
+        nodes.add(node5);
         Graph<Integer> graph = new Graph(nodes);
+
         return graph;
     }
 }

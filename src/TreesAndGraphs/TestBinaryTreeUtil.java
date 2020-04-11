@@ -26,7 +26,7 @@ public class TestBinaryTreeUtil {
         BinarySearchTree<Integer> bstClass = new BinarySearchTree<>();
         bstClass.createBstWithMinHeight(sortedArray);
 
-        Assert.assertTrue(BinaryTreeUtil.isBinarySearchTree(bstClass.rootNode));
+        Assert.assertTrue(BinaryTreeUtil.isBinarySearchTree(bstClass.rootNode, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 
     @Test
@@ -36,6 +36,6 @@ public class TestBinaryTreeUtil {
         BinarySearchTree<Integer> bstClass = new BinarySearchTree<>();
         bstClass.createBstWithMinHeight(sortedArray);
 
-        Assert.assertFalse(BinaryTreeUtil.isBinarySearchTree(bstClass.rootNode));
+        Assert.assertFalse(BinaryTreeUtil.isBinarySearchTree(bstClass.rootNode, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 }

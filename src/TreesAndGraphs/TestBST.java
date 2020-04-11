@@ -49,17 +49,4 @@ public class TestBST {
 
     }
 
-    @Test
-    public void testInsertTrial() {
-        BinarySearchTree<Integer> bstClass = new BinarySearchTree<>();
-        bstClass.insertTrial(4);
-        bstClass.insertTrial(3);
-        bstClass.insertTrial(5);
-        bstClass.insertTrial(6);
-
-        StringBuilder path = new StringBuilder();
-        BinaryTreeTraversals.inOrder(bstClass.rootNode, path);
-        System.out.println("Tree Inorder: " + path.toString());
-
-    }
 }

@@ -56,6 +56,12 @@ public class TestGraphTraversal {
         node3.adjacentNodes.add(node4);
         List<GraphNode<Integer>> nodes = new ArrayList<>(1);
         nodes.add(node0);
+        nodes.add(node1);
+        nodes.add(node2);
+        nodes.add(node3);
+        nodes.add(node4);
+        nodes.add(node5);
+
         Graph<Integer> graph = new Graph(nodes);
 
         //Assert.assertTrue(GraphTraversals.pathExistsBetweenNodes(graph, node3, node1));
