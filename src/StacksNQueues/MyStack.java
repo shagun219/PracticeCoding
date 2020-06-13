@@ -42,4 +42,16 @@ public class MyStack<T> {
     public boolean isEmpty() {
         return top == null;
     }
+
+    public String emptyStack() {
+        StringBuilder sb = new StringBuilder();
+        while(top != null) {
+            sb.append(top.data != null ? top.data.toString() : "").append(",");
+            top = top.next;
+        }
+        if(sb.length() > 0) {
+            sb.setLength(sb.length()-1);
+        }
+        return sb.toString();
+    }
 }
